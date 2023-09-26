@@ -3,22 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-	<script src="main.js"></script>
+    <title>Promedios</title>
+    <script src="main.js"></script>
   </head>
   <body>
-    <h1>Bienvenidos</h1>
-    
+    <h1>Sistema de gestion de Promedios</h1>
+
     <label for="totalAlumnos">Ingrese cantidad de Alumnos:</label>
     <input type="number" id="totalAlumnos" name="totalAlumnos" />
     <br /><br />
-    <button type="button" onclick="guardarAlumnos()">Enviar</button>
-
+    <button id="enviarBoton" type="button" onclick="guardarAlumnos()">
+      Agregar
+    </button>
+    <br /><br />
     <div id="container"></div>
-	<label for="jsonContainer">Notas:</label>
-	<div id="jsonContainer">
-		
-	</div>
-
+    <br /><br />
+    <label for="jsonContainer">Notas:</label>
+    <div id="jsonContainer"></div>
+    <button id="limpiarStorage" type="submit">Limpiar storage</button>
+    <br /><br />
   </body>
+  <script>
+    let limpiarStorage = document.getElementById("limpiarStorage");
+
+    limpiarStorage.addEventListener("click", function () {
+      if (localStorage.length > 0) {
+        localStorage.clear();
+        let jsonContainer = document.getElementById("jsonContainer");
+        jsonContainer.innerHTML = "";
+        alert("El almacenamiento local ha sido limpiado.");
+      } else {
+        alert("El almacenamiento local ya está vacío.");
+      }
+    });
+  </script>
 </html>
